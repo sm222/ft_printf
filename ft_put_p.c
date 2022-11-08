@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_put_p.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 13:01:19 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/07 09:36:45 by anboisve         ###   ########.fr       */
+/*   Created: 2022/11/07 14:09:21 by anboisve          #+#    #+#             */
+/*   Updated: 2022/11/08 14:58:20 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_putstr_fd(char *s, int fd)
+int	ft_put_p(uintptr_t p)
 {
-	if (!s)
-		return (0);
-	return (write(fd, s, ft_strlen(s)));
+	char	*v_p;
+	int		size;
+
+	ft_putstr_fd("0x", STDOUT_FILENO);
+	v_p = ft_utob((unsigned long int)p, 16);
+	size = ft_putstr_fd(v_p, STDOUT_FILENO);
+	if (v_p)
+		free(v_p);
+	return (size + 2);
 }

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:07:18 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/06 16:47:41 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:08:44 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+
+# define HEX_TABLE "0123456789abcdef"
 
 //char--------verification
 
@@ -62,9 +64,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 
 //output------------------
 
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+int		ft_putchar_fd(char c, int fd);
+int		ft_putstr_fd(char *s, int fd);
+int		ft_putnbr_fd(int n, int fd);
 void	ft_putendl_fd(char *s, int fd);
 
 //conversion--------------
@@ -94,5 +96,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 //other-------------------
 
 void	*ft_safe_free(void *p);
+int		ft_size_int(int nb);
 
 #endif

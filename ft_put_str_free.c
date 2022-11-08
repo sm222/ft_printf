@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_put_str_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 13:01:19 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/07 09:36:45 by anboisve         ###   ########.fr       */
+/*   Created: 2022/11/08 15:06:35 by anboisve          #+#    #+#             */
+/*   Updated: 2022/11/08 15:14:24 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_putstr_fd(char *s, int fd)
+int	ft_put_str_free(char *s)
 {
+	int	size;
+
+	size = 0;
 	if (!s)
 		return (0);
-	return (write(fd, s, ft_strlen(s)));
+	size = ft_putstr_fd(s, STDERR_FILENO);
+	if (s)
+		free(s);
+	return (size);
 }
