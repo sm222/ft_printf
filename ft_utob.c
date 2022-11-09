@@ -6,13 +6,13 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:00:16 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/08 18:46:37 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:06:43 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	size_of_x(unsigned long int nb, int base)
+static int	size_of_x(unsigned long long nb, int base)
 {
 	int	size;
 
@@ -25,7 +25,7 @@ static int	size_of_x(unsigned long int nb, int base)
 	return (size);
 }
 
-char	*ft_utob(unsigned long int nb, int base)
+char	*ft_utob(unsigned long long nb, int base)
 {
 	char		*hex_table;
 	char		*result;
@@ -35,13 +35,13 @@ char	*ft_utob(unsigned long int nb, int base)
 	if (nb == 0)
 		i++;
 	hex_table = HEX_TABLE;
-	result = ft_calloc(i, sizeof(char));
+	result = ft_calloc(i + 1, sizeof(char));
 	if (!result)
 		return (NULL);
 	while (i--)
 	{
 		result[i] = hex_table[nb % base];
-		nb /= 16;
+		nb /= base;
 	}
 	return (result);
 }

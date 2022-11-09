@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:12:13 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/08 18:59:57 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:23:04 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_print_select(va_list list, char c)
 	else if (c == 'x' || c == 'X')
 		return (ft_put_hex(va_arg(list, unsigned int), c));
 	else if (c == 'u')
-		return (ft_put_hex(va_arg(list, unsigned int), c));
+		return (ft_put_u(va_arg(list, unsigned int)));
 	return (0);
 }
 
@@ -67,8 +67,8 @@ int	ft_printf(const char *str, ...)
 /*
 int	main(void)
 {
-	printf("1_%d\n", ft_printf("%x", 10));
-	printf("2_%d\n", printf("%x", 10));
+	ft_printf("my %..i\n", ft_printf("%p\n", ULONG_MAX));
+	printf("real %..i\n", printf("%p\n", ULONG_MAX));
 	return (0);
 }
 */
