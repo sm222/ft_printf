@@ -6,13 +6,13 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:12:13 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/09 10:23:04 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:47:41 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print_select(va_list list, char c)
+static int	ft_print_select(va_list list, unsigned char c)
 {
 	char	*s;
 
@@ -54,8 +54,10 @@ int	ft_printf(const char *str, ...)
 		else
 		{
 			i++;
-			while (ft_isalpha(str[i]) == 0 && str[i] != '%')
+			while (ft_strchr("csidpxXu%", str[i]) == NULL)
 				i++;
+			if (str[i] == 0)
+				break ;
 			total += ft_print_select(arg, str[i]);
 		}
 		i++;
@@ -63,12 +65,3 @@ int	ft_printf(const char *str, ...)
 	va_end(arg);
 	return (total);
 }
-
-/*
-int	main(void)
-{
-	ft_printf("my %..i\n", ft_printf("%p\n", ULONG_MAX));
-	printf("real %..i\n", printf("%p\n", ULONG_MAX));
-	return (0);
-}
-*/
