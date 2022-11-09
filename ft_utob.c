@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:00:16 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/08 14:58:17 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:46:37 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	size_of_x(unsigned long int nb, int base)
 {
-	int			size;
+	int	size;
 
 	size = 0;
 	while (nb)

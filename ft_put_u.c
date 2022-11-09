@@ -1,24 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_put_u.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 13:13:03 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/08 18:56:03 by anboisve         ###   ########.fr       */
+/*   Created: 2022/11/08 19:01:10 by anboisve          #+#    #+#             */
+/*   Updated: 2022/11/08 19:01:16 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-
-# include <stdarg.h>
-# include "libft/libft.h"
-
-int		ft_printf(const char *str, ...);
-int		ft_put_p(uintptr_t nbr);
-char	*ft_utob(unsigned long int nb, int base);
-int		ft_put_hex(unsigned int val, char maj);
-
-#endif
+#include "ft_printf.h"

@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:12:13 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/08 15:06:04 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:59:57 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@ static int	ft_print_select(va_list list, char c)
 	}
 	else if (c == 'i' || c == 'd')
 		return (ft_putnbr_fd(va_arg(list, int), STDOUT_FILENO));
+	else if (c == 'c')
+		return (ft_putchar_fd(va_arg(list, int), STDOUT_FILENO));
 	else if (c == 'p')
 		return (ft_put_p(va_arg(list, uintptr_t)));
 	else if (c == '%')
 		return (ft_putchar_fd('%', STDOUT_FILENO));
 	else if (c == 'x' || c == 'X')
-		return ();
+		return (ft_put_hex(va_arg(list, unsigned int), c));
+	else if (c == 'u')
+		return (ft_put_hex(va_arg(list, unsigned int), c));
 	return (0);
 }
 
@@ -50,6 +54,8 @@ int	ft_printf(const char *str, ...)
 		else
 		{
 			i++;
+			while (ft_isalpha(str[i]) == 0 && str[i] != '%')
+				i++;
 			total += ft_print_select(arg, str[i]);
 		}
 		i++;
@@ -57,3 +63,12 @@ int	ft_printf(const char *str, ...)
 	va_end(arg);
 	return (total);
 }
+
+/*
+int	main(void)
+{
+	printf("1_%d\n", ft_printf("%x", 10));
+	printf("2_%d\n", printf("%x", 10));
+	return (0);
+}
+*/

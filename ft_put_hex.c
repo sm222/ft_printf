@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_str_free.c                                  :+:      :+:    :+:   */
+/*   ft_put_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:06:35 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/08 15:14:24 by anboisve         ###   ########.fr       */
+/*   Created: 2022/11/08 16:51:22 by anboisve          #+#    #+#             */
+/*   Updated: 2022/11/08 18:58:46 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_put_str_free(char *s)
+int	ft_put_hex(unsigned int val, char maj)
 {
-	int	size;
+	int		size;
+	char	*tmp;
 
-	size = 0;
-	if (!s)
-		return (0);
-	size = ft_putstr_fd(s, STDERR_FILENO);
-	if (s)
-		free(s);
+	tmp = ft_utob(val, 16);
+	size = ft_strlen(tmp);
+	if (maj == 'X')
+	{
+		while (size + 1)
+		{
+			tmp[size] = ft_toupper(tmp[size]);
+			size--;
+		}
+	}
+	size = ft_putstr_fd(tmp, STDOUT_FILENO);
+	free (tmp);
 	return (size);
 }
