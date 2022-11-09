@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:12:13 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/09 13:47:41 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/09 14:23:57 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ int	ft_printf(const char *str, ...)
 		else
 		{
 			i++;
-			while (ft_strchr("csidpxXu%", str[i]) == NULL)
-				i++;
-			if (str[i] == 0)
-				break ;
 			total += ft_print_select(arg, str[i]);
 		}
 		i++;
