@@ -6,18 +6,18 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:51:22 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/08 18:58:46 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:31:11 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_put_hex(unsigned int val, char maj)
+int	ft_put_hex(unsigned int nb, char maj)
 {
 	int		size;
 	char	*tmp;
 
-	tmp = ft_utob(val, 16);
+	tmp = ft_ulltoa(nb, 16);
 	size = ft_strlen(tmp);
 	if (maj == 'X')
 	{

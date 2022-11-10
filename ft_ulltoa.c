@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:00:16 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/09 11:14:48 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:14:55 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,20 @@ static int	size_of_x(unsigned long long nb, int base)
 	return (size);
 }
 
-char	*ft_utob(unsigned long long nb, int base)
+char	*ft_ulltoa(unsigned long long nb, int base)
 {
-	char		*hex_table;
 	char		*result;
 	int			i;
 
 	i = size_of_x(nb, base);
 	if (nb == 0)
 		i++;
-	hex_table = HEX_TABLE;
 	result = ft_calloc(i + 1, sizeof(char));
 	if (!result)
 		return (NULL);
 	while (i--)
 	{
-		result[i] = hex_table[nb % base];
+		result[i] = HEX_TABLE[nb % base];
 		nb /= base;
 	}
 	return (result);

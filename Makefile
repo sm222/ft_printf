@@ -1,53 +1,38 @@
 
-# Compiler and flags
-CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra -I. -I./$(INCDIR)
-RM		=	rm -f
-
-# Output file name
 NAME	=	libftprintf.a
 LIBFT	= 	libft.a
 LDIR	=	libft/
 
-# Sources are all .c files
-SRCDIR	=	./
-SRCS	=	$(wildcard $(SRCDIR)*.c) # Wildcard for sources is forbidden by norminette
+CC		=	gcc
+CFLAGS	=	-Wall -Werror -Wextra
+RM		=	rm -f
 
-# Objects are all .o files
-OBJDIR	=	bin/
-OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
+SRCS	=	ft_printf.c\
+			ft_put_hex.c\
+			ft_put_p.c\
+			ft_put_u.c\
+			ft_ulltoa.c
 
-# Includes are all .h files
-INCDIR	=	include/
-INC		=	$(wildcard $(INCDIR)*.h)
-
+OBJS	=	$(SRCS:.c=.o)
 
 all: $(LDIR)$(LIBFT) $(NAME)
 
-
 $(NAME): $(OBJS) $(LDIR)$(LIBFT)
-	$(HIDE) cp $(LDIR)$(LIBFT) $@
-	$(HIDE) ar rcs $(NAME) $(OBJS) $@
-	
+	cp $(LDIR)$(LIBFT) $(NAME)
+	ar -rcs $(NAME) $(OBJS)
 
-$(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c $(INC) | $(OBJDIR)
-	$(HIDE)$(CC) $(CFLAGS) -c $< -o $@
-
-
-$(OBJDIR):
-	$(HIDE)mkdir -p $@
+$(OBJS): $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS)
 
 $(LDIR)$(LIBFT):
-	$(HIDE)$(MAKE) -C $(LDIR)
-
+	$(MAKE) -C $(LDIR)
 
 clean:
-	$(HIDE)$(RM) $(OBJS)
-	$(HIDE)$(RM) $(LDIR)*.o
-
+	$(RM) $(OBJS)
+	$(RM) $(LDIR)*.o
 
 fclean: clean
-	$(HIDE)$(RM) $(NAME)
-	$(HIDE)$(RM) $(LDIR)$(LIBFT)
+	$(RM) $(NAME)
+	$(RM) $(LDIR)$(LIBFT)
 
 re: fclean all
