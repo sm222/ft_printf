@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utob.c                                          :+:      :+:    :+:   */
+/*   ft_ulltoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:00:16 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/10 09:14:55 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/11 09:05:32 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	size_of_x(unsigned long long nb, int base)
+static int	ft_size_of_unb(unsigned long long nb, int base)
 {
 	int	size;
 
@@ -30,7 +30,7 @@ char	*ft_ulltoa(unsigned long long nb, int base)
 	char		*result;
 	int			i;
 
-	i = size_of_x(nb, base);
+	i = ft_size_of_unb(nb, base);
 	if (nb == 0)
 		i++;
 	result = ft_calloc(i + 1, sizeof(char));

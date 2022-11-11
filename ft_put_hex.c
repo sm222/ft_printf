@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:51:22 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/10 09:31:11 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/11 08:41:20 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,11 @@ int	ft_put_hex(unsigned int nb, char maj)
 	char	*tmp;
 
 	tmp = ft_ulltoa(nb, 16);
-	size = ft_strlen(tmp);
+	size = ft_strlen(tmp) + 1;
 	if (maj == 'X')
-	{
-		while (size + 1)
-		{
+		while (size--)
 			tmp[size] = ft_toupper(tmp[size]);
-			size--;
-		}
-	}
 	size = ft_putstr_fd(tmp, STDOUT_FILENO);
-	free (tmp);
+	ft_safe_free(tmp);
 	return (size);
 }

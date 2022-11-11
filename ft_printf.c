@@ -6,7 +6,7 @@
 /*   By: anboisve <anboisve@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:12:13 by anboisve          #+#    #+#             */
-/*   Updated: 2022/11/10 13:01:34 by anboisve         ###   ########.fr       */
+/*   Updated: 2022/11/11 09:12:23 by anboisve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,8 @@ int	ft_printf(const char *str, ...)
 			total += ft_putchar_fd(str[i], STDOUT_FILENO);
 		else
 		{
-			i++;
-			if (str[i] == 0)
-				break ;
+			if (str[++i] == 0)
+				continue ;
 			total += ft_print_select(arg, str[i]);
 		}
 		i++;
@@ -65,13 +64,3 @@ int	ft_printf(const char *str, ...)
 	va_end(arg);
 	return (total);
 }
-
-/*
-int	main(int c, char **v)
-{
-	(void)c;
-	(void)v;
-	printf("\033[1;0m%d\n", ft_printf("\033[1;32m"));
-	ft_printf("\033[1;0m%d\n", printf("\033[1;32m"));
-}
-*/
