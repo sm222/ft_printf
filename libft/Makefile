@@ -62,9 +62,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
-$(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
-
 bonus: $(BOBJS)
 	ar -rs $(NAME) $(BOBJS)
 

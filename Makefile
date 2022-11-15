@@ -1,11 +1,5 @@
 
 NAME	=	libftprintf.a
-LIBFT	= 	libft.a
-LDIR	=	libft/
-
-CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
-RM		=	rm -f
 
 SRCS	=	ft_printf.c\
 			ft_put_hex.c\
@@ -15,14 +9,21 @@ SRCS	=	ft_printf.c\
 
 OBJS	=	$(SRCS:.c=.o)
 
-all: $(LDIR)$(LIBFT) $(NAME)
+CC		=	gcc
+CFLAGS	=	-Wall -Werror -Wextra
+
+RM		=	rm -f
+
+LIBFT	= 	libft.a
+LDIR	=	libft/
+
 
 $(NAME): $(OBJS) $(LDIR)$(LIBFT)
 	cp $(LDIR)$(LIBFT) $(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
-$(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
+all: $(LDIR)$(LIBFT) $(NAME)
+
 
 $(LDIR)$(LIBFT):
 	$(MAKE) -C $(LDIR)
